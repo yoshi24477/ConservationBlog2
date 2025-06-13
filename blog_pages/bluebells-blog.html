@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bluebells of Earlham Park</title>
+  <style>
+	/* Dark sleek Deloitte-inspired style */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+    body {
+      margin: 0;
+      background-color: #121619; /* dark background */
+      color: #e0e6e9; /* soft light text */
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      padding: 2rem;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: #00b67a; /* Deloitte green accent */
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #00f08c;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+      animation: fadeInDown 1s ease forwards;
+      opacity: 0;
+    }
+
+    header h1 {
+      font-weight: 600;
+      font-size: 2.5rem;
+      margin-bottom: 0.2rem;
+    }
+
+    header p {
+      font-weight: 400;
+      color: #7a7f86;
+      font-size: 1.2rem;
+    }
+
+    .photos {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+    }
+
+    .photo-container {
+      max-width: 400px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 16px rgba(0, 182, 122, 0.3);
+      background: #1b1f23;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .photo-container:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 24px rgba(0, 182, 122, 0.6);
+    }
+
+    .photo-container img {
+      width: 100%;
+      display: block;
+      border-bottom: 2px solid #00b67a;
+    }
+
+    .caption {
+      padding: 0.8rem 1rem;
+      font-size: 0.9rem;
+      color: #a0b8ad;
+      background-color: #15191d;
+      font-style: italic;
+    }
+
+    .content {
+      max-width: 900px;
+      margin: auto;
+      font-size: 1.1rem;
+      animation: fadeIn 1.5s ease forwards;
+      opacity: 0;
+      color: #cfd8dc;
+    }
+
+    .content h2 {
+      color: #00b67a;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      font-size: 2rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .photos {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+	
+	/* Your existing styles */
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.popup-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+  </style>
+  
+  <script>
+  function openPopup(imageSrc) {
+    document.getElementById('popup').style.display = 'block';
+    document.getElementById('popup-image').src = imageSrc;
+}
+
+function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+}
+
+  </script>
+</head>
+<body>
+
+<header>
+  <h1>The Bluebells of Earlham Park</h1>
+  <p>Capturing nature’s fleeting beauty</p>
+</header>
+
+<section class="photos">
+  <div class="photo-container" onclick="openPopup('../images/bluebells.jpg')">
+    <img src="../images/bluebells.jpg" alt="Bluebells in Earlham Park, Spring">
+    <div class="caption">Earlham Park, Spring 2025</div>
+  </div>
+  <div class="photo-container" onclick="openPopup('../images/bluebells-low-view.jpg')">
+    <img src="../images/bluebells-low-view.jpg" alt="Bluebells in Earlham Park, Early Summer">
+    <div class="caption">Earlham Park, Early Summer 2024</div>
+  </div>
+</section>
+
+<section class="content">
+  <h2>History and Natural Significance</h2>
+  <p>The bluebell (Hyacinthoides non-scripta) is a cherished symbol of ancient woodlands across the UK, including the beautiful Earlham Park at UEA. Historically, bluebells have been admired in human culture for their delicate beauty and seasonal arrival, often associated with folklore and spring festivals.</p>
+  
+  <p>In natural history, bluebells are fascinating for their evolutionary adaptations to shaded woodland environments. Their vibrant blue flowers attract early pollinators, ensuring successful reproduction before the tree canopy fully develops. These plants have thrived in temperate Europe for millennia, acting as indicators of long-established woodland ecosystems.</p>
+  
+  <p>Conservation efforts focus on protecting bluebell habitats, as hybridization with non-native species and habitat destruction pose threats. Their presence is a sign of ecological richness and continuity, making them an essential part of our natural heritage.</p>
+</section>
+
+<div id="popup" class="popup">
+  <span class="close" onclick="closePopup()">&times;</span>
+  <img class="popup-content" id="popup-image">
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
